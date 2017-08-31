@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="Semantic-UI-CSS-master/semantic.css" />
+<link rel="stylesheet" href="css/app.css" />
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="Semantic-UI-CSS-master/semantic.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+<title>Index</title>
+
+</head>
+
+<script type="text/javascript">
+	var wsocket = null;
+	$(document).ready(
+			function() {
+				//检查浏览器是否支持html5
+				if (!isHtml5Support()) {
+					var globalErrorMsg = "你的浏览器不支持HTML5,请升级或者更换浏览器";
+					alert(globalErrorMsg);
+					location.href = "errorpage.html";
+					return;
+				}
+				// 获取客户端标示
+				if (!localStorage.userTag) {
+					localStorage.userTag = newGuid();
+				}
+				// 建立ws连接
+				wsConnect('ws://10.141.138.112:8080/WebSocketSample/websocket/'
+						+ localStorage.userTag);
+			});
+</script>
+
+<body>
+
+	<div id="loginDiv" class="ui middle aligned center aligned grid">
+		<div class="column">
+			<form class="ui large form">
+				<div class="ui stacked segment">
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="user icon"></i> <input id="loginNameInput" type="text"
+								name="email" placeholder="用户名">
+						</div>
+					</div>
+					<div id="loginBtn" class="ui fluid large teal submit button"
+						onclick="user_login();">登录</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="mainDiv" class="ui grid" style="display: none;">
+		<!-- 聊天消息 -->
+		<div class="ui comments ten wide column">
+			<h3 class="ui dividing header">
+				<span id="wsStatus" class="ui horizontal label"></span>聊天消息
+			</h3>
+			<div id="chatOutputDiv"></div>
+			<!-- shuru -->
+			<form class="ui reply form">
+				<div class="field">
+					<textarea id="messageInput"></textarea>
+				</div>
+				<div class="ui blue labeled submit icon button"
+					onclick="send_message();">
+					<i class="icon edit"></i>发送消息
+				</div>
+			</form>
+		</div>
+
+		<!-- 用户列表 -->
+		<div id="userListDiv"
+			class="ui aligned center animated selection list six wide column">
+
+		</div>
+	</div>
+
+
+</body>
+</html>

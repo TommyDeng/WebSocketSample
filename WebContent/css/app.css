@@ -1,0 +1,41 @@
+/* body { */
+/* 	background-color: #DADADA; */
+/* } */
+
+/* body>.grid { */
+/* 	height: 100%; */
+/* } */
+
+/* .image { */
+/* 	margin-top: -100px; */
+/* } */
+.column {
+	max-width: 450px;
+	min-width: 450px;
+}
+
+div#chatOutputDiv {
+	margin: 1em;
+	padding: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 40em;
+	height: 40em;
+}
+
+div#chatOutputDiv {
+	margin: 1em;
+	padding: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 40em;
+	height: 40em;
+}
+
+div#userListDiv {
+	margin: 0em 0em;
+}
+
+div#mainDiv {
+	margin: 3em;
+}
